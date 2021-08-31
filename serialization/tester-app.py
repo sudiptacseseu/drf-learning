@@ -1,6 +1,6 @@
 import requests
 
-URL = "http://localhost:8000/student_info/"
+URL = "http://localhost:8000/student-info/"
 
 data = requests.get(url=URL)
 json_data = data.json()
