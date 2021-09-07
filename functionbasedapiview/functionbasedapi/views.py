@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.response import Response
 from .models import Student
 from .serializers import StudentSerializer
 from rest_framework import status
+from rest_framework.authentication import BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 
 # @api_view()
@@ -34,6 +36,9 @@ from rest_framework import status
 
 
 @api_view(['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
+# To add authentication and permission on the function based view
+# @authentication_classes([BasicAuthentication])
+# @permission_classes([IsAuthenticated])
 def student_api(request, pk=None):
     if request.method == "GET":
         # If pk sent by data from third party
