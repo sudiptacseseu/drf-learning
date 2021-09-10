@@ -1,4 +1,4 @@
-from rest_framework.pagination import PageNumberPagination, LimitOffsetPagination
+from rest_framework.pagination import PageNumberPagination, LimitOffsetPagination, CursorPagination
 
 
 class CustomPageNumberPagination(PageNumberPagination):
@@ -23,3 +23,13 @@ class CustomLimitOffsetPagination(LimitOffsetPagination):
     offset_query_param = 'starting'
     # Maximum element size on a single page
     max_limit = 5
+
+
+class CustomCursorPagination(CursorPagination):
+    # Elements to show on a single page
+    page_size = 5
+    # It uses created time to order but we don't have any created field on our model,
+    # so we are using name field to order
+    ordering = 'name'
+    # Custom parameter name
+    cursor_query_param = 'c'

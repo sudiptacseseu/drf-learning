@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.generics import ListAPIView
 from .models import Student
-from .paginations import CustomPageNumberPagination
+from .paginations import CustomPageNumberPagination, CustomCursorPagination
 from .paginations import CustomLimitOffsetPagination
 from .serializers import StudentSerializer
 
@@ -12,4 +12,6 @@ class StudentList(ListAPIView):
     # For page number pagination
     # pagination_class = CustomPageNumberPagination
     # For limit offset pagination
-    pagination_class = CustomLimitOffsetPagination
+    # pagination_class = CustomLimitOffsetPagination
+    # For cursor pagination
+    pagination_class = CustomCursorPagination
