@@ -125,3 +125,22 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Global settings to alter default throttling settings
+REST_FRAMEWORK = {
+    # 'DEFAULT_THROTTLE_CLASSES': [
+    #     'rest_framework.throttling.AnonRateThrottle',
+    #     'rest_framework.throttling.UserRateThrottle',
+    # ],
+    'DEFAULT_THROTTLE_RATES': {
+        # 'anon': '2/day',
+        # 'user': '5/hour',
+
+        # Setting custom throttle rate
+        'getStudent': '10/minute',
+        'createStudent': '5/minute',
+        'retrieveStudent': '6/minute',
+        'updateStudent': '3/minute',
+        'destroyStudent': '2/minute',
+    }
+}
