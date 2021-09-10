@@ -127,7 +127,11 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Set filter backend globally using filter backend
-# REST_FRAMEWORK = {
-#     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
-# }
+
+REST_FRAMEWORK = {
+    # Custom search parameter
+    # 'SEARCH_PARAM': 'query',
+
+    # Set filter backend globally using filter backend
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}

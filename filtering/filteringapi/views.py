@@ -4,6 +4,7 @@ from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView,
 from .models import Student
 from .serializers import StudentSerializer
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import SearchFilter
 
 
 # Concrete api view (Separate view)
@@ -13,10 +14,20 @@ class StudentList(ListAPIView):
     # queryset = Student.objects.filter(passby='user')
     serializer_class = StudentSerializer
 
-    # Set filter locally using filter backend
-    filter_backends = [DjangoFilterBackend]
+    # Set filter locally using django filter backend
+    # filter_backends = [DjangoFilterBackend]
     # filterset_fields = ['city']
-    filterset_fields = ['name', 'city']
+    # filterset_fields = ['name', 'city']
+
+    # Set filter using search filter
+    filter_backends = [SearchFilter]
+    # search_fields = ['name', 'city']
+    # Starts with
+    search_fields = ['^name']
+    # Exact match
+    # search_fields = ['=name']
+    # Full text search(only supports on PostGreSQL
+    # search_fields = ['@name']
 
     # Filter by current user
     # def get_queryset(self):
